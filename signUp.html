@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sign In</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+      <link rel="stylesheet" href="Main.css">
+    </head>
+    <body>
+    
+  
+ 
+   
+      <div class="container">
+        <div class="row tm-mt-big">
+            <div class="col-7 mx-auto tm-login-col">
+                <div class="bg-white tm-block">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <i class="fas fa-3x fa-user-plus tm-site-icon text-center"></i>
+                            <h2 class="tm-block-title mt-3 text-success">Sign Up</h2>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <form id="signupForm" class="tm-login-form">
+                                <div class="input-group">
+                                  <div class="input-group-text">
+                                    <label for="username">Username</label>
+                                  </div>
+                                    <input name="username" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" placeholder="admin" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                  <div class="input-group-text">
+                                    <label for="password" >Password</label>
+                                  </div>
+                                    <input name="password" type="password" class="form-control validate" id="password" placeholder="Enter Password" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                  <div class="input-group-text">
+                                    <label for="confirmPassword" >Confirm Password</label>
+                                  </div>
+                                    <input name="confirmPassword" type="password" class="form-control validate" id="confirmPassword" placeholder="Enter password again" required>
+                                    <div class="error text-danger" id="passwordError"></div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="input-group mt-3 col-md-2">
+                                        <button type="submit" class="btn btn-success d-inline-block mx-auto rounded">Sign Up</button>
+                                    </div>
+                                    <div class="input-group mt-3 align-items-center justify-content-center col-md-1">
+                                        <p class="text-dark">Already have an account?Log in</p>
+                                    </div>
+                                    <div class="input-group mt-3 col-md-2">
+                                        <a href="login.html" class="btn btn-success d-inline-block mx-auto rounded">Login</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      document.getElementById('signupForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Get form data
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          const passwordError = document.getElementById('passwordError');
+
+          // Clear previous error message
+          passwordError.innerText = '';
+
+          // Check if passwords match
+          if (password !== confirmPassword) {
+              passwordError.innerText = 'Passwords do not match!';
+              return; // Stop form submission
+          }
+
+          // Create a data object to send to the backend
+          const data = {
+              username: username,
+              password: password
+          };
+
+          // Send data to backend using Fetch API
+          fetch('https://your-backend-api.com/signup', { // Replace with your backend URL
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data)
+          })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok: ' + response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Success:', data);
+              // Handle success (e.g., redirect to another page or display a message)
+          })
+          .catch((error) => {
+              console.error('Error:', error);
+              // Handle error (e.g., display an error message)
+          });
+      });
+  </script>
+    
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+    </html>
+  
+
+
+
+
+
+
+  <script src="public/bootstrap.bundle.min.js"></script>
+</body>
+</html>
