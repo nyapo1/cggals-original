@@ -10,5 +10,18 @@
 }
 
 section{
-  padding: 60px 0;
+  padding: 6px 0;
 }
+
+.Home {
+  background-image: url('https://images.pexels.com/photos/1376042/pexels-photo-1376042.jpeg?auto=compress&cs=tinysrgb&w=800');
+  background-position: 50% 20%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh; /* Set the height to the full viewport height */
+  }
+
+  .location-section{
+    background-color: rgb(48, 46, 46);
+  }
+
